@@ -211,9 +211,7 @@ spillOver <- function(transformedScores, K, alpha = 0.5, file.name = NULL) {
 #'
 #' @param adjustedScores the combined microenvironment scores
 #'
-#' @return the microenvironment scores
-microenvironmentScores <- function(adjustedScores) {
-  
+#' @return the microenvironment scores  
 
 microenvironmentScores <- function(adjustedScores) {
   
@@ -245,7 +243,6 @@ microenvironmentScores <- function(adjustedScores) {
   adjustedScores = rbind(adjustedScores,ImmuneScore,StromaScore,MicroenvironmentScore)
 }
 
-}
 
 #' Calculate significance p-values for the null hypothesis that the cell type is not present in the mixture using a random matrix.
 #'
