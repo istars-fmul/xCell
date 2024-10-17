@@ -217,11 +217,11 @@ microenvironmentScores <- function(adjustedScores) {
   
   # Immune
   immuneCellTypes = c('B-cells','CD4+ T-cells','CD8+ T-cells','DC','Eosinophils','Macrophages','Monocytes','Mast cells','Neutrophils','NK cells')
-  immuneCellTypes = which(immuneCellTypes %in% row.names(adjustedScores))
+  immuneCellTypes = immuneCellTypes[immuneCellTypes %in% row.names(adjustedScores)]
 
   ImmuneScore = 0
   if (length( immuneCellTypes) > 1) {
-    print(paste("Immune cell microenvironment score was calculated with the following cell types: ", row.names(adjustedScores)[immuneCellTypes]))
+    print(paste("Immune cell microenvironment score was calculated with the following cell types: ", immuneCellTypes))
     ImmuneScore = apply(adjustedScores[immuneCellTypes,],2,sum)/1.5
   } else {
     print("Not enough cell types to calculate immune microenvironment")
@@ -229,12 +229,12 @@ microenvironmentScores <- function(adjustedScores) {
   
   # Stromal
   stromaCellTypes = c('Adipocytes','Endothelial cells','Fibroblasts')
-  stromaCellTypes = which(stromaCellTypes %in% row.names(adjustedScores))
+  stromaCellTypes = stromaCellTypes[stromaCellTypes %in% row.names(adjustedScores)]
 
   StromaScore = 0
   if (length(stromaCellTypes) > 1) {
     StromaScore = apply(adjustedScores[stromaCellTypes,],2,sum)/2
-    print(paste("Stromal cell microenvironment score was calculated with the following cell types: ", row.names(adjustedScores)[stromaCellTypes]))
+    print(paste("Stromal cell microenvironment score was calculated with the following cell types: ", stromaCellTypes))
   } else {
     print("Not enough cell types to calculate stroma microenvironment")
   }
